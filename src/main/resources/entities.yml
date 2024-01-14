@@ -1,0 +1,8 @@
+# RandomLootEntity is basic plugin that makes your life easier!
+# Do you want to edit drops
+entities:
+  ZOMBIE:
+    ClearDefaultDrops: true
+    ClearDefaultExperience: false
+    Drops:
+      - STONE:1:0.7
