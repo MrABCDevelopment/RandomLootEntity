@@ -46,6 +46,8 @@ public class EntityManager {
 
 			randomEntity.setClearDefaultDrops(section.getBoolean(key+".ClearDefaultDrops",false));
 			randomEntity.setExperienceDrops(section.getBoolean(key+".ClearDefaultExperience",false));
+			randomEntity.setDropsIntoInventory(section.getBoolean(key+".DropsIntoInventory", false));
+			randomEntity.setAdditionalExp(section.getInt(key+".AdditionalExp", 0));
 
 			for (String item : section.getStringList(key+".Drops")) {
 				String[] strings = item.split(":");

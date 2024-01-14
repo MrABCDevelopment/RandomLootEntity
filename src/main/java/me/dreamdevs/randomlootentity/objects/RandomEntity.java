@@ -14,6 +14,8 @@ public class RandomEntity {
 
 	private @Getter @Setter boolean clearDefaultDrops;
 	private @Getter @Setter boolean experienceDrops;
+	private @Getter @Setter boolean dropsIntoInventory;
+	private @Getter @Setter int additionalExp;
 
 	public RandomEntity(EntityType entityType) {
 		this.entityType = entityType;
