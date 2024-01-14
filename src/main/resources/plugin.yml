@@ -2,3 +2,15 @@ name: ${project.name}
 version: ${project.version}
 main: me.dreamdevs.randomlootentity.RandomLootEntityMain
 api-version: 1.13
+
+commands:
+  randomlootentity:
+    aliases: [rle, randomentity]
+    permission: randomlootentity.admin
+    permission-message: You cannot use this command.
+    description: The main command of RandomLootEntity plugin.
+
+permissions:
+  randomlootentity.admin:
+    default: op
+    description: This permission is required to use admin commands
