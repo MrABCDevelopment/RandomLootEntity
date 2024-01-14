@@ -2,8 +2,10 @@ package me.dreamdevs.randomlootentity;
 
 import lombok.Getter;
 import me.dreamdevs.randomlootentity.commands.CommandHandler;
+import me.dreamdevs.randomlootentity.listeners.EntityListeners;
 import me.dreamdevs.randomlootentity.managers.EntityManager;
 import me.dreamdevs.randomlootentity.utils.Util;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -24,8 +26,26 @@ public final class RandomLootEntityMain extends JavaPlugin {
 
         this.entityManager = new EntityManager();
 
+        getServer().getPluginManager().registerEvents(new EntityListeners(), this);
+
         new CommandHandler(this);
         new Metrics(this, 20741);
+
+        Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> new UpdateChecker(this, 114501).getVersion(version -> {
+            if (getDescription().getVersion().equals(version)) {
+                Util.sendPluginMessage("");
+                Util.sendPluginMessage("&aYour version is up to date!");
+                Util.sendPluginMessage("&aYour version: " + getDescription().getVersion());
+                Util.sendPluginMessage("");
+            } else {
+                Util.sendPluginMessage("");
+                Util.sendPluginMessage("&aThere is new RandomLootEntity version!");
+                Util.sendPluginMessage("&aYour version: " + getDescription().getVersion());
+                Util.sendPluginMessage("&aNew version: " + version);
+                Util.sendPluginMessage("");
+            }
+        }), 10L, 20L * 1200);
+
     }
 
     @Override

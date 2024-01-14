@@ -4,7 +4,6 @@ import me.dreamdevs.randomlootentity.RandomLootEntityMain;
 import me.dreamdevs.randomlootentity.objects.RandomEntity;
 import me.dreamdevs.randomlootentity.objects.RandomItem;
 import me.dreamdevs.randomlootentity.utils.ItemUtil;
-import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -25,7 +24,7 @@ public class EntityManager {
 		this.randomEntities = new LinkedList<>();
 
 		if (!entitiesFile.exists()) {
-			RandomLootEntityMain.getInstance().saveResource(entitiesFile.getPath(), true);
+			RandomLootEntityMain.getInstance().saveResource("entities.yml", true);
 		}
 
 		this.load();
@@ -35,7 +34,7 @@ public class EntityManager {
 		this.randomEntities.clear();
 
 		FileConfiguration config = YamlConfiguration.loadConfiguration(entitiesFile);
-		ConfigurationSection section = config.getConfigurationSection("entites");
+		ConfigurationSection section = config.getConfigurationSection("entities");
 
 		for (String key : section.getKeys(false)) {
 			if (EntityType.valueOf(key.toUpperCase()) == null) {
