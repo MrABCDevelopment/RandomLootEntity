@@ -4,8 +4,8 @@ entities:
   ZOMBIE:
     ClearDefaultDrops: true
     ClearDefaultExperience: false
-    DropsIntoInventory: true
-    Additional-Exp: 2
+    DropsIntoInventory: false
+    AdditionalExp: 2
     Drops:
       - STONE:1:0.7
       - STONE_PICKAXE:1:0.5

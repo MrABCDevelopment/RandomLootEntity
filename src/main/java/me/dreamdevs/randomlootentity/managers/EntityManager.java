@@ -57,6 +57,7 @@ public class EntityManager {
 				randomEntity.getRandomItems().add(randomItem);
 			}
 
+			randomEntities.add(randomEntity);
 		}
 	}
 

@@ -16,7 +16,7 @@ public class EntityListeners implements Listener {
 		if (RandomLootEntityMain.getInstance().getEntityManager().getRandomEntity(event.getEntityType()) != null) {
 			RandomEntity randomEntity = RandomLootEntityMain.getInstance().getEntityManager().getRandomEntity(event.getEntityType());
 
-			if (!randomEntity.isClearDefaultDrops()) {
+			if (randomEntity.isClearDefaultDrops()) {
 				event.getDrops().clear();
 			}
 
