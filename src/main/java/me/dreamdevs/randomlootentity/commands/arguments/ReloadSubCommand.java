@@ -13,6 +13,7 @@ public class ReloadSubCommand implements ArgumentCommand {
 	@Override
 	public boolean execute(CommandSender commandSender, String[] args) {
 		Language.reloadLanguage();
+		RandomLootEntityMain.getInstance().getItemManager().load();
 		RandomLootEntityMain.getInstance().getEntityManager().load();
 		commandSender.sendMessage(Language.COMMAND_RELOAD_ALL.toString());
 		return true;

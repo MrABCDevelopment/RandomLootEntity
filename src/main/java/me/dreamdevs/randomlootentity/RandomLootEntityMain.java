@@ -4,6 +4,7 @@ import lombok.Getter;
 import me.dreamdevs.randomlootentity.commands.CommandHandler;
 import me.dreamdevs.randomlootentity.listeners.EntityListeners;
 import me.dreamdevs.randomlootentity.managers.EntityManager;
+import me.dreamdevs.randomlootentity.managers.ItemManager;
 import me.dreamdevs.randomlootentity.utils.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -17,6 +18,7 @@ public final class RandomLootEntityMain extends JavaPlugin {
 
     private @Getter static RandomLootEntityMain instance;
     private @Getter EntityManager entityManager;
+    private @Getter ItemManager itemManager;
 
     @Override
     public void onEnable() {
@@ -24,6 +26,7 @@ public final class RandomLootEntityMain extends JavaPlugin {
 
         loadLanguage();
 
+        this.itemManager = new ItemManager(this);
         this.entityManager = new EntityManager();
 
         getServer().getPluginManager().registerEvents(new EntityListeners(), this);

@@ -3,16 +3,15 @@ package me.dreamdevs.randomlootentity.managers;
 import me.dreamdevs.randomlootentity.RandomLootEntityMain;
 import me.dreamdevs.randomlootentity.objects.RandomEntity;
 import me.dreamdevs.randomlootentity.objects.RandomItem;
-import me.dreamdevs.randomlootentity.utils.ItemUtil;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.EntityType;
-import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 public class EntityManager {
 
@@ -49,12 +48,8 @@ public class EntityManager {
 			randomEntity.setAdditionalExp(section.getInt(key+".AdditionalExp", 0));
 
 			for (String item : section.getStringList(key+".Drops")) {
-				String[] strings = item.split(":");
-
-				ItemStack itemStack = ItemUtil.parsedBasicItem(strings[0], Integer.parseInt(strings[1]));
-
-				RandomItem randomItem = new RandomItem(itemStack, Double.parseDouble(strings[2]));
-				randomEntity.getRandomItems().add(randomItem);
+				Optional<RandomItem> randomItem = Optional.ofNullable(RandomLootEntityMain.getInstance().getItemManager().getRandomItemById(item));
+				randomItem.ifPresent(value -> randomEntity.getRandomItems().add(value));
 			}
 
 			randomEntities.add(randomEntity);

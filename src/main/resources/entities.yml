@@ -7,5 +7,5 @@ entities:
     DropsIntoInventory: false
     AdditionalExp: 2
     Drops:
-      - STONE:1:0.7
-      - STONE_PICKAXE:1:0.5
+      - example_stone
+      - example_sword
